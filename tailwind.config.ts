@@ -11,7 +11,7 @@ export default {
     extend: {
       colors: {
         black: '#171717',
-        green: '#29312C'
+        green: '#414C45'
       },
       fontFamily: {
         sans: ["var(--font-inter)", ...fontFamily.sans],

@@ -4,7 +4,7 @@ import Button from "./ui/Button";
 
 const Hero = () => {
   return (
-    <main className="flex h-[calc(100vh-84px)] w-full font-sans relative">
+    <main className="flex h-[calc(100vh-72px)] w-full font-sans text-white relative">
       <div className="w-full h-full absolute top-0 left-0 -z-10 bg-black/40"></div>
       <div className="w-full h-full absolute top-0 left-0 -z-20">
         <Image

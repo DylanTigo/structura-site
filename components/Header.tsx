@@ -1,16 +1,29 @@
+'use client'
+
 import Link from "next/link";
+import { useState } from "react";
+import Menu from "./Menu";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="flex justify-between items-center h-16 px-3 sm:px-16 font-medium font-chakra">
-      <Link href="/" className="uppercase">
-        Structura
-      </Link>
-      <button type="button" className="flex items-center gap-1.5 uppercase">
-        <span className="size-2 rounded-full dark:bg-amber-100 bg-amber-950"></span>{" "}
-        <span>Menu</span>{" "}
-      </button>
-    </div>
+    <>
+      <div className="flex items-center h-16 px-3 font-medium font-chakra relative">
+        <Link href="/" className="uppercase">
+          Structura
+        </Link>
+        <button type="button" onClick={handleMenuClick} className="absolute right-3 flex items-center gap-1.5 uppercase z-50">
+          <span className="size-2 rounded-full dark:bg-amber-100 bg-amber-950"></span>{" "}
+          <span>Menu</span>{" "}
+        </button>
+      </div>
+      <Menu isOpen={isMenuOpen} onClose={handleMenuClick} />
+    </>
   );
 };
 
