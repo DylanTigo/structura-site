@@ -25,6 +25,8 @@ const Menu = ({ isOpen, onClose, menuTl }: MenuProps) => {
           amount: 0.3,
         },
       })
+      .to(bgBlur.current, {
+        opacity: 1}, "0")
       .duration(menuTl?.reversed() ? 0.7 : menuTl?.duration());
     },
     { scope: menu, dependencies: [isOpen] }
@@ -38,7 +40,7 @@ const Menu = ({ isOpen, onClose, menuTl }: MenuProps) => {
       <div
         onClick={onClose}
         ref={bgBlur}
-        className="absolute top-0 left-0 w-full h-full bg-black/30 z-10 cursor-pointer backdrop-blur-sm opacity-0"
+        className="absolute top-0 left-0 w-full h-full bg-black/40 z-10 cursor-pointer backdrop-blur-sm opacity-0"
       />
       <div className="menuNav bg-white">
         <div className="inner bg-amber-200" />
