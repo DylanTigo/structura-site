@@ -7,3 +7,12 @@
     @apply bg-black text-white;
   }
 }
+
+@layer components {
+  .menuNav {
+    @apply fixed top-0 right-0 w-full sm:w-[400px] h-full z-50 px-3 pb-5 translate-x-full
+  }
+  .menuNav .inner {
+    @apply absolute inset-0 w-full h-full z-20 translate-x-full origin-left
+  }
+}

@@ -14,11 +14,14 @@ gsap.registerPlugin(useGSAP);
 const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const loader = useRef<HTMLDivElement>(null);
+  const menuTl = useRef<gsap.core.Timeline | null>(null);
+
   const timeline = useTimeline();
 
   useGSAP(() => {
+    menuTl.current = gsap.timeline({ paused: true });
+
     timeline?.to(".element", {
       y: 0,
       duration: 0.7,
@@ -27,6 +30,16 @@ const Header = () => {
 
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
+    console.log( "Is menu reversed: ", menuTl.current?.reversed());
+    console.log("Is menu open: ", isMenuOpen);
+    if (!isMenuOpen) {
+      // menuTl.current?.
+      menuTl.current?.play();
+    } else {
+      menuTl.current?.reverse().then(() => {
+        menuTl.current?.clear();
+      });
+    }
   };
 
   return (
@@ -49,7 +62,7 @@ const Header = () => {
           </button>
         </TextWrapper>
       </div>
-      <Menu isOpen={isMenuOpen} onClose={handleMenuClick} />
+      <Menu isOpen={isMenuOpen} menuTl={menuTl.current} onClose={handleMenuClick} />
     </>
   );
 };

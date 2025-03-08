@@ -26,17 +26,17 @@ const Hero = () => {
           {
             opacity: 0,
             y: 40,
-            duration: 0.5,
+            duration: 0.7,
             stagger: 0.01,
           },
-          "+0.5"
+          "+0.7"
         )
         .from(
           ".description span",
           {
             opacity: 0,
             y: 20,
-            duration: 0.5,
+            duration: 0.7,
             stagger: 0.009,
           },
           "<"
@@ -46,23 +46,23 @@ const Hero = () => {
           opacity: 1,
           scale: 1,
           duration: 0.5
-        }, "<+0.5")
+        }, "<+0.3")
         .to(
           stats.current,
           {
             opacity: 1,
             scale: 1,
-            duration: 1,
           },
-          "<-0.2"
+          "<-0.1"
         )
         .to(
           image.current,
           {
             scale: 1,
-            duration: 2,
+            duration: 1,
+            ease: "sine.out",
           },
-          "0"
+          "0+=0.5"
         );
 
       timeline?.play();
@@ -70,10 +70,11 @@ const Hero = () => {
     { scope: hero, dependencies: [timeline] }
   );
 
+
   return (
     <main
       ref={hero}
-      className="flex lg:h-[calc(100vh-72px)] max-sm:min-h-[calc(100vh-72px)] w-full font-sans text-white relative"
+      className="flex lg:h-[calc(100vh-72px)] sm:max-h-[100vw] max-sm:min-h-[calc(100vh-72px)] w-full font-sans text-white relative"
     >
       <div className="w-full h-full absolute top-0 left-0 -z-10 bg-black/40"></div>
       <div className="w-full h-full absolute top-0 left-0 -z-20 overflow-hidden">
@@ -82,6 +83,7 @@ const Hero = () => {
           src="/image.png"
           alt="Hero background"
           fill
+          priority
           className="object-cover scale-125"
         />
       </div>
@@ -104,21 +106,21 @@ const Hero = () => {
           </div>
 
           <div className="flex items-center gap-3.5 mt-8 sm:mt-16">
-            <Button type="secondary" className="btn opacity-0 translate-y-2 scale-110">
+            <Button type="secondary" className="btn opacity-0 translate-y-2 scale-110 group">
               <TextWrapper className="flex flex-col h-6">
-                <div>{splitText("Learn More")}</div>
-                <div>{splitText("Learn More")}</div>
+              <div className="group-hover:-translate-y-full transition-transform">Learn more</div>
+              <div className="group-hover:-translate-y-full transition-transform">Learn more</div>
               </TextWrapper>
             </Button>
-            <Button type="primary" className="btn opacity-0 translate-y-2 scale-110">
+            <Button type="primary" className="btn opacity-0 translate-y-2 scale-110 group">
               <TextWrapper className="flex flex-col h-6">
-                <div>{splitText("Get Started")}</div>
-                <div>{splitText("Get Started")}</div>
+                <div className="group-hover:-translate-y-full transition-transform">Get Started</div>
+                <div className="group-hover:-translate-y-full transition-transform">Get Started</div>
               </TextWrapper>
             </Button>
           </div>
         </div>
-        <div ref={stats} className=" absolute right-0 bottom-0 flex justify-center gap-6 leading-none bg-green/60 h-fit w-full sm:w-fit py-8 sm:px-16 opacity-0 scale-105">
+        <div ref={stats} className=" absolute right-0 bottom-0 flex justify-center gap-6 leading-none bg-green/60 h-fit w-full sm:w-fit py-8 sm:px-16 opacity-0 scale-95">
           <div className="flex flex-col justify-center items-center font-chakra">
             <span className="text-[calc(30px+2vmin)] sm:text-[calc(44px+1vmin)] font-medium">
               87
