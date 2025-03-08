@@ -18,16 +18,47 @@ const Menu = ({ isOpen, onClose, menuTl }: MenuProps) => {
 
   useGSAP(
     () => {
-      menuTl?.to(".menuNav, .inner", {
-        x: 0,
-        ease: "power1.out",
-        stagger: {
-          amount: 0.3,
-        },
-      })
-      .to(bgBlur.current, {
-        opacity: 1}, "0")
-      .duration(menuTl?.reversed() ? 0.7 : menuTl?.duration());
+      menuTl
+        ?.to(".menuNav, .inner", {
+          x: 0,
+          ease: "power1.out",
+          stagger: {
+            amount: 0.3,
+          },
+        })
+        .to(
+          bgBlur.current,
+          {
+            autoAlpha: 1,
+          },
+          "0"
+        )
+        .to(
+          ".link",
+          {
+            x: 0,
+            duration: 0.5,
+          },
+          "<+0.3"
+        )
+        .to(
+          ".botNav a",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+          },
+          "<+0.1"
+        )
+        .to(
+          ".botNav hr",
+          {
+            scaleX: 1,
+            duration: 0.5,
+          },
+          "<"
+        )
+        .duration(menuTl?.reversed() ? 0.7 : menuTl?.duration());
     },
     { scope: menu, dependencies: [isOpen] }
   );
@@ -40,42 +71,32 @@ const Menu = ({ isOpen, onClose, menuTl }: MenuProps) => {
       <div
         onClick={onClose}
         ref={bgBlur}
-        className="absolute top-0 left-0 w-full h-full bg-black/40 z-10 cursor-pointer backdrop-blur-sm opacity-0"
+        className="absolute top-0 left-0 w-full h-full bg-black/80 z-10 cursor-pointer backdrop-blur-sm opacity-0"
       />
       <div className="menuNav bg-white">
         <div className="inner bg-amber-200" />
         <div className="inner bg-black" />
-        <div className="inner flex flex-col justify-between bg-green">
-          <nav className="flex flex-col pt-20 text-5xl">
-            <Link href="/" className="py-5 px-10 w-full">
-              <TextWrapper>
-                Home
-              </TextWrapper>
+        <div className="inner flex flex-col justify-between bg-green pb-5">
+          <nav className="flex flex-col px-3 pt-20 text-5xl sm:text-6xl font-medium">
+            <Link href="/" className="link after:content-['Home']">
+              Home
             </Link>
-            <Link href="/" className="py-5 px-10 w-full">
-              <TextWrapper>
-                About
-              </TextWrapper>
+            <Link href="/" className="link after:content-['About']">
+              About
             </Link>
-            <Link href="/" className="py-5 px-10 w-full">
-              <TextWrapper>
+            <Link href="/" className="link after:content-['Projects']">
               Projects
-              </TextWrapper>
             </Link>
-            <Link href="/" className="py-5 px-10 w-full">
-              <TextWrapper>
+            <Link href="/" className="link after:content-['Blogs']">
               Blogs
-              </TextWrapper>
             </Link>
-            <Link href="/" className="py-5 px-10 w-full">
-              <TextWrapper>
+            <Link href="/" className="link after:content-['Contact']">
               Contact
-              </TextWrapper>
             </Link>
           </nav>
 
-          <div className="text-center">
-            <hr className="opacity-50" />
+          <div className="botNav text-center">
+            <hr className="opacity-50 scale-x-0 origin-right" />
             <nav className="flex justify-around text-sm gap-4 m-4 mb-1 uppercase font-medium">
               <Link href="/">Linkedin</Link>
               <Link href="/">Facebook</Link>
