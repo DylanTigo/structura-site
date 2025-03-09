@@ -51,7 +51,7 @@ const Header = () => {
             Structura
           </Link>
         </TextWrapper>
-        <TextWrapper className="absolute right-3 z-50">
+        <div className="absolute right-3 z-50 group">
           <button
             type="button"
             onClick={handleMenuClick}
@@ -60,7 +60,8 @@ const Header = () => {
             <span className="size-2 rounded-full dark:bg-amber-100 bg-amber-950"></span>{" "}
             <span>Menu</span>{" "}
           </button>
-        </TextWrapper>
+          <span className="hover-link w-full z-[100]"></span>
+        </div>
       </div>
       <Menu isOpen={isMenuOpen} menuTl={menuTl.current} onClose={handleMenuClick} />
     </>

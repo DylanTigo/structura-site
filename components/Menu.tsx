@@ -77,7 +77,7 @@ const Menu = ({ isOpen, onClose, menuTl }: MenuProps) => {
         <div className="inner bg-amber-200" />
         <div className="inner bg-black" />
         <div className="inner flex flex-col justify-between bg-green pb-5">
-          <nav className="flex flex-col px-3 pt-20 text-5xl sm:text-6xl font-medium">
+          <nav className="flex flex-col pt-20 text-5xl sm:text-6xl font-medium">
             <Link href="/" className="link after:content-['Home']">
               Home
             </Link>
@@ -95,12 +95,12 @@ const Menu = ({ isOpen, onClose, menuTl }: MenuProps) => {
             </Link>
           </nav>
 
-          <div className="botNav text-center">
+          <div className="botNav px-3 text-center">
             <hr className="opacity-50 scale-x-0 origin-right" />
             <nav className="flex justify-around text-sm gap-4 m-4 mb-1 uppercase font-medium">
-              <Link href="/">Linkedin</Link>
-              <Link href="/">Facebook</Link>
-              <Link href="/">Twitter</Link>
+              <Link href="/" className="relative group"><span className="hover-link"></span>Linkedin</Link>
+              <Link href="/" className="relative group"><span className="hover-link"></span>Facebook</Link>
+              <Link href="/" className="relative group"><span className="hover-link"></span>Twitter</Link>
             </nav>
           </div>
         </div>
