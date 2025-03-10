@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Link from "next/link";
 import React, { useRef } from "react";
-import TextWrapper from "./ui/TextWrapper";
+// import TextWrapper from "./ui/TextWrapper";
 
 gsap.registerPlugin(useGSAP);
 
@@ -98,9 +98,9 @@ const Menu = ({ isOpen, onClose, menuTl }: MenuProps) => {
           <div className="botNav px-3 text-center">
             <hr className="opacity-50 scale-x-0 origin-right" />
             <nav className="flex justify-around text-sm gap-4 m-4 mb-1 uppercase font-medium">
-              <Link href="/" className="relative group"><span className="hover-link"></span>Linkedin</Link>
-              <Link href="/" className="relative group"><span className="hover-link"></span>Facebook</Link>
-              <Link href="/" className="relative group"><span className="hover-link"></span>Twitter</Link>
+              <Link href="/" className="relative group">Linkedin<span className="hover-link"></span></Link>
+              <Link href="/" className="relative group">Facebook<span className="hover-link"></span></Link>
+              <Link href="/" className="relative group">Twitter<span className="hover-link"></span></Link>
             </nav>
           </div>
         </div>
